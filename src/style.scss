@@ -1,0 +1,157 @@
+// SASS: Variables - Colors
+$col-shadow: rgba(0,0,0,0.75);
+$col-text: #333;
+$col-background: #eee;
+$col-active: #00adee;
+
+// SASS: Variables - Dimensions
+$dim-image: 2rem;
+$dim-font: 1.5rem;
+$dim-navbar: 4rem;
+$dim-padding: 1em;
+
+// SASS: Mixins
+@mixin drop-shadow($color) {
+    -webkit-box-shadow: 0px 6px 20px -5px $color;
+    -moz-box-shadow: 0px 6px 20px -5px $color;
+    box-shadow: 0px 6px 20px -5px $color;
+}
+
+.black-on-white {
+    color: $col-text;
+    background: $col-background;
+}
+
+body {
+    color: $col-active;
+    background: $col-text;
+    font-family: Quicksand, sans-serif;
+    padding: $dim-padding;
+}
+
+.app-navbar {
+    // SASS: mixin usage
+    @include drop-shadow($col-shadow);
+
+    position: fixed;
+    display: flex;
+    height: $dim-navbar;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    // SASS: nested classes (img & label)
+    img {
+        width: $dim-image;
+        height: $dim-image;
+        margin-left: $dim-image;
+        margin-right: $dim-image;
+        margin-top: $dim-padding;
+    }
+    label {
+        font-size: $dim-font;
+        line-height: $dim-navbar;
+    }
+
+    //SASS: multiple states
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.app-content {
+    // SASS: inheritance
+    @extend .black-on-white;
+    position: fixed;
+    height: calc(100vh - #{$dim-navbar});
+    width: 100vw;
+    top: $dim-navbar;
+    left: 0;
+}
+
+input {
+    width: calc(100% - 3rem);
+    height: 2rem;
+    line-height: 2rem;
+    margin: {
+        top: 1em;
+        left: 1em;
+        right: 1em;
+        bottom: 1em;
+    }
+    padding: {
+        left: .75rem;
+        right: .75rem;
+    }
+    
+    border: 0;
+    border-bottom: 1px solid darkgrey;
+    background-color: rgba(lightgrey, 0.5);
+    outline: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+.panel-container {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh-8rem);
+    .panel {
+        position: relative;
+        width: 50%;
+        height: calc(100vh - 4rem);
+    }
+}
+
+.results {
+    padding: {
+        left: 1em;
+        right: 1em;
+    }
+    ul {
+        // position: absolute;
+        list-style: none;
+        width: 100%;
+        font-size: 1rem;
+        max-height: 80vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -webkit-margin-after: 0;
+        -webkit-margin-before: 0;
+        -webkit-margin-start: 0;
+        -webkit-margin-end: 0;
+        -webkit-padding-start: 0;
+        -webkit-padding-end: 0;
+        -webkit-box-shadow: 0px 5px 15px 0px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow: 0px 5px 15px 0px rgba(50, 50, 50, 0.75);
+        box-shadow: 0px 5px 15px 0px rgba(50, 50, 50, 0.75);
+        z-index: 1;
+
+        $dim-height-item: 3rem;
+        $dim-padding: 1rem;
+        $dim-border: 1px;
+
+        li {
+            position: relative;
+            width: 100%;
+            height: $dim-height-item;
+            line-height: $dim-height-item;
+            color: black;
+            background: white;
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow-x: hidden;
+            white-space: nowrap;
+            padding-left: $dim-padding;
+            padding-right: $dim-padding;
+            border-bottom: $dim-border solid lighten(lightgrey, 10%);
+            &:hover {
+                cursor: pointer;
+                background-color: lighten(lightgrey, 10%);
+            }
+        }
+    }
+}
