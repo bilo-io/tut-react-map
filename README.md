@@ -13,9 +13,9 @@ If you have experienced any of the pain points above, then keep reading. This ar
 
 # Quickstart
 
-If you want the source code, find it on [`https://github.com/bilo-io/tut-react`](https://github.com/bilo-io/tut-react). You can clone, setup and run it with the following console commands:
+If you want the source code, find it on [`https://github.com/bilo-io/tut-react-map`](https://github.com/bilo-io/tut-react-map). You can clone, setup and run it with the following console commands:
 
-- `git clone https://github.com/bilo-io/tut-react.git`
+- `git clone https://github.com/bilo-io/tut-react-map.git`
 - `cd ./tut-react`
 - `npm install`
 - `npm start`
