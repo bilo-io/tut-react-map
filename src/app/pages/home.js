@@ -10,15 +10,20 @@ export default class Home extends React.Component {
         this.googleUrl = `https://maps.googleapis.com/maps/api/geocode/json?`;
         this.searchGoogle = this.searchGoogle.bind(this);
     }
+    componentWillMount() {
+        this.setState({
+            
+        })
+    }
     render() {
-        return (
+        return this.state ? (
             <div className="panel-container">
                 <div className="panel">
                     <Search search={this.searchGoogle} />
                     <div className="results">
                         <ul>
                             {
-                                this.state && this.state.response ?
+                                this.state.response ?
                                     this.state.response.results.map((result, idx) => {
                                         result.address_components = [];
                                         return <li key={idx} onClick={(e) => {
@@ -33,17 +38,17 @@ export default class Home extends React.Component {
                         </ul>
                     </div>
                     {
-                        this.state && this.state.googleResult ?
-                            <textarea style={{padding: '1rem', width: 'calc(100% - 2rem)', height: 'calc(100% - 6rem)'}} onChange={ () => {}} value={JSON.stringify(this.state.googleResult, false, 2)}></textarea>
+                        this.state.googleResult ?
+                            <textarea style={{ padding: '1rem', width: 'calc(100% - 2rem)', height: 'calc(100% - 6rem)' }} onChange={() => { }} value={JSON.stringify(this.state.googleResult, false, 2)}></textarea>
                             : null
                     }
                 </div>
-                <div className="panel" style={{ backgroundColor: '#1e1e1e', color: 'white'}}>
-                    {/*<Map />*/}
-                    <OLMap />
+                <div className="panel" style={{ backgroundColor: '#1e1e1e', color: 'white' }}>
+                    <Map />
+                    {/* <OLMap /> */}
                 </div>
             </div>
-        )
+        ) : null;
     }
     searchGoogle(query) {
         if (query.length == 0) {
